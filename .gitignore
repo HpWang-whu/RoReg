@@ -1,7 +1,7 @@
-# hide training files for undering review.
-train/*
-media/*
-parses/parses_train*
-dataops/dataloader.py
-trainset.py
-Train.py
+# train/*
+# media/*
+# parses/parses_train*
+# dataops/dataloader.py
+# trainset.py
+# Train.py
+checkpoints/RD_former/*
