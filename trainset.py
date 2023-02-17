@@ -13,10 +13,7 @@ parser.add_argument(
     help='GF/RD/RM for indicating which kind of trainset are generated')
 args = parser.parse_args()
 
-if True:
-    print('donnot train')
-
-elif args.component == 'GF':
+if args.component == 'GF':
     cfg,_ = parses_gf.get_config()
     generator = name2trainset['trainset_gf'](cfg)
     generator.run()

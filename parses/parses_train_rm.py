@@ -76,11 +76,11 @@ Train_Args.add_argument("--lr_decay_step",type=float,default=1,
                         help="the decay step of the learning rate (how many epoches)")
 
 #log
-Train_Args.add_argument("--train_log_step",type=int,default=1,
+Train_Args.add_argument("--train_log_step",type=int,default=2000,
                         help="logger internal")
-Val_Args.add_argument("--val_interval",type=int,default=10,
+Val_Args.add_argument("--val_interval",type=int,default=10000,
                         help="the interval to validation")
-Val_Args.add_argument("--save_interval",type=int,default=2,
+Val_Args.add_argument("--save_interval",type=int,default=4000,
                         help="the interval to save the model")
 
 # datalist 

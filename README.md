@@ -58,12 +58,12 @@ Specifically, The code has been tested with:
 
 ## Dataset & Pretrained model
 The datasets and pretrained weights have been uploaded to Google Cloud:
-- [3DMatch_train](https://drive.google.com/file/d/1mfnGL8pRvc6Rw6m6YnvNKdbpGxGJ081G/view?usp=sharing);
+- [3dm_train_rot](https://drive.google.com/file/d/15wrOvrDST1gl7dTVwzE937TCQfse6Ihk/view?usp=sharing);
 - [3DMatch/3DLomatch](https://drive.google.com/file/d/1UzGBPce5VspD2YIj7zWrrJYjsImSEc-5/view?usp=sharing);
 - [ETH](https://drive.google.com/file/d/1hyurp5EOzvWGFB0kOl5Qylx1xGelpxaQ/view?usp=sharing);
-- [Pretrained Weights](https://drive.google.com/file/d/1egPh8m41sAXeOfgxIFhvzl1r4QbR4YFX/view?usp=sharing). (Already added to the main branch.)
+- [Pretrained Weights](https://drive.google.com/file/d/1YZixgOA1MrmTsaFFCKxO_CdUHsat8Nzi/view?usp=sharing). (Already added to the main branch.)
 
-Also, all data above can be downloaded in [BaiduDisk](https://pan.baidu.com/s/17Rs9cTd1CVl9sPi9l2FL2Q)(Code:1pj6), where the checkpoints of RoReg are saved in ```YOHO/RoReg/checkpoints```.
+Also, all data above can be downloaded in [BaiduDisk](https://pan.baidu.com/s/1xvnXNENCLvIZ4jjIZP6Kxg)(Code:b4zd), where the checkpoints of RoReg and 3dm_train_rot are saved in ```YOHO/RoReg```.
 
 Datasets above contain the point clouds (.ply) and keypoints (.txt, 5000 per point cloud) files. Please place the data to ```./data/origin_data``` following the example data structure as:
 
@@ -83,10 +83,29 @@ data/
 ```
 
 ## Train
+To train RoReg-Desc and local rotation estimation (one-shot transformation estimation) with the FCGF backbone we offer, you can first prepare the trainset:
+```
+python trainset.py --component GF
+```
+and conduct training of the two components by:
+```
+python Train.py --component GF # for RoReg-Desc, requiring ~250G storage space.
+python Train.py --component ET # for local rotations
+```
 
-Currently the repository contains only the evaluation code because the paper is under reviewing. The whole code will be avaliable soon. Part of training code, i.e., our descriptor RoReg-Desc and one-shot transformation estimation, has been pushed to [YOHO](https://github.com/HpWang-whu/YOHO).
+To train rotation-guided detector yourself, you can following the commonds of 
+```
+python trainset.py --component RD
+python Train.py --component RD
+```
 
-We already offer the pretrained models in ```./checkpoints```.
+To train rotation coherence matcher yourself, you can following the commonds of 
+```
+python trainset.py --component RM # require ~300G storage space.
+python Train.py --component RM
+```
+
+All models will be saved in ```./checkpoints/FCGF```.
 
 ## Demo
 
