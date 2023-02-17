@@ -4,7 +4,13 @@ We present RoReg, a novel point cloud registration framework that fully exploits
 
 ## News
 
-- 2023-02-05 RoReg has been accepted by IEEE TPAMI! [[TPAMI]](https://doi.org/10.1109/TPAMI.2023.3244951) [[Project_Page]]() [[Supplementary_Material]](media/RoReg_Appendix.pdf)
+- 2023-02-05 RoReg has been accepted by IEEE TPAMI! 
+  
+  [[TPAMI]](https://doi.org/10.1109/TPAMI.2023.3244951)  (*Early Access. We will fix some typographical errors like Fig.2 in the final publication.)
+
+  [[Project_Page]](https://hpwang-whu.github.io/RoReg/) 
+
+  [[Supplementary_Material]](media/RoReg_Appendix.pdf)
 - 2022-09-16 The code of RoReg is released.
 - 2022-06-30 The early work of RoReg, a.k.a [YOHO](https://github.com/HpWang-whu/YOHO), is accepted by ACM MM 2022!
 
