@@ -4,7 +4,7 @@ We present RoReg, a novel point cloud registration framework that fully exploits
 
 ## News
 
-- 2023-02-05 RoReg has been accepted by IEEE TPAMI! 
+- 2023-02-05 RoReg has been accepted by IEEE TPAMI! :tada: :tada:
   
   [[TPAMI]](https://doi.org/10.1109/TPAMI.2023.3244951)  (*Early Access. We will fix some typographical errors like Fig.2 in the final publication.)
 
@@ -178,6 +178,8 @@ If you find RoReg/YOHO useful in your research, please consider citing:
 ```
 
 ## Related Projects
+Welcome to take a look at the homepage of our research group [WHU-USI3DV](https://github.com/WHU-USI3DV) ! We focus on 3D Computer Vision, particularly including 3D reconstruction, scene understanding, point cloud processing as well as their applications in intelligent transportation system, digital twin cities, urban sustainable development, and robotics.
+
 [YOHO](https://github.com/HpWang-whu/YOHO) is the early work of RoReg and we sincerely thank the contributing projects:
 - [EMVN](http://github.com/daniilidis-group/emvn) for the group details;
 - [FCGF](https://github.com/chrischoy/FCGF) for the backbone;
