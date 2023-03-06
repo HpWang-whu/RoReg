@@ -93,7 +93,7 @@ python Train.py --component GF # for RoReg-Desc, requiring ~250G storage space.
 python Train.py --component ET # for local rotations
 ```
 
-After the training of RoReg-Desc and local rotation estimation, you can following the commonds to train rotation-guided detector yourself:
+After the training of RoReg-Desc and local rotation estimation, you can follow the commonds to train rotation-guided detector yourself:
 ```
 python trainset.py --component RD
 python Train.py --component RD
