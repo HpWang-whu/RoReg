@@ -185,7 +185,7 @@ class testset_create():
         dset=FCGFDataset(self.datasets,self.config)
         loader = torch.utils.data.DataLoader(
             dset,
-            batch_size=4, 
+            batch_size=4, # if out of memory change the batch_size to 1
             shuffle=False,
             num_workers=16,
             collate_fn=self.collate_fn,

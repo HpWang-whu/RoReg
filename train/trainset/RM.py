@@ -64,8 +64,8 @@ import numpy as np
 from tqdm import tqdm
 from dataops.dataset import get_dataset_name
 from utils.r_eval import compute_R_diff
-from parses.parses_rm import get_config
-from utils.utils import transform_points,read_pickle,save_pickle,make_non_exists_dir
+from parses.parses_train_rm import get_config
+from utils.utils import read_pickle,save_pickle,make_non_exists_dir
 
 
 class RM_trainset():

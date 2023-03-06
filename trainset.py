@@ -1,6 +1,6 @@
-import parses.parses_gf as parses_gf
-import parses.parses_rd as parses_rd
-import parses.parses_rm as parses_rm
+import parses.parses_train_gf as parses_gf
+import parses.parses_train_rd as parses_rd
+import parses.parses_train_rm as parses_rm
 from train import name2trainset
 
 import argparse

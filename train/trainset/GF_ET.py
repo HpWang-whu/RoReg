@@ -8,12 +8,11 @@ pps + FCGF Group feature --> batch.
 
 import os
 import numpy as np
-import argparse
 import open3d as o3d
 import torch
 import random
 from tqdm import tqdm
-from parses.parses_gf import get_config
+from parses.parses_train_gf import get_config
 from utils.r_eval import compute_R_diff,quaternion_from_matrix
 from dataops.dataset import get_dataset_name
 from utils.utils import make_non_exists_dir,random_rotation_matrix,read_pickle,save_pickle, transform_points
@@ -161,7 +160,7 @@ class GF_ET_trainset():
         return quaternion_from_matrix(deltaR)
 
 
-    def trainset(self):
+    def Gen_trainset(self):
         Save_list_dir=f'{self.output_dir}/trainset'
         make_non_exists_dir(Save_list_dir)
         batch_i=-1
@@ -201,8 +200,6 @@ class GF_ET_trainset():
 
                 #pps
                 Key_pps=np.load(f'{self.output_dir}/Pairs/{dataset.name}/{pc0}-{pc1}.npy') #index in keys
-                keys0=dataset.get_kps(pc0)
-                keys1=dataset.get_kps(pc1)
                 pps_all=np.arange(Key_pps.shape[0]) #index
                 
                 if pps_all.shape[0]<10:continue
@@ -214,8 +211,6 @@ class GF_ET_trainset():
                     #pair pps (choose 32):
                     np.random.shuffle(pps_all)
                     pps=Key_pps[pps_all[0:32]]# bn*2
-                    keys_sample0=keys0[pps[:,0]]
-                    keys_sample1=keys1[pps[:,1]]
                     BaseIndex=np.arange(self.Rnum).astype(np.int)
                     Index_i=np.random.choice(BaseIndex, size=32, replace=True)
                     Index_j=np.random.choice(BaseIndex, size=32, replace=True)
@@ -252,7 +247,7 @@ class GF_ET_trainset():
         
 
 
-    def valset(self):
+    def Gen_valset(self):
         Save_list_dir=f'{self.output_dir}/valset'
         make_non_exists_dir(Save_list_dir)
         val_pc_pts=[]
@@ -278,11 +273,7 @@ class GF_ET_trainset():
             Feats0=np.load(f'{self.output_dir}/Rotated_Features/{datasetname}/{pc0}_feats.npz')
             Feats1=np.load(f'{self.output_dir}/Rotated_Features/{datasetname}/{pc1}_feats.npz')
             datasetname=datasetname[(str.rfind(datasetname,'/')+1):]
-            keys0=self.datasets[datasetname].get_kps(pc0)
-            keys1=self.datasets[datasetname].get_kps(pc1)
             gtR = self.datasets[datasetname].get_transform(pc0,pc1)[0:3,0:3]
-            key0=keys0[pt0]
-            key1=keys1[pt1]
             R_i=Feats0['Rs'][Ri_id]
             R_j=Feats1['Rs'][Rj_id]
             R=R_j@gtR.T@R_i.T
@@ -297,11 +288,16 @@ class GF_ET_trainset():
             }
             torch.save(item,f'{Save_list_dir}/{i}.pth',_use_new_zipfile_serialization=False)
 
+    def Clean_cache(self):
+        os.system(f'rm -rf {self.output_dir}/Rotated_Features')
+
     def run(self):
         self.PCA_keys_sample()
         self.PC_random_rot_feat()
-        self.trainset()
-        self.valset()
+        self.Gen_trainset()
+        self.Gen_valset()
+        # clean cache
+        self.Clean_cache()
 
 if __name__=="__main__":
     args, nouse = get_config()

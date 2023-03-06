@@ -5,9 +5,6 @@ Loss and validations.
 
 import torch
 import abc
-import utils.utils as utils
-import time
-from tqdm import tqdm
 import numpy as np
 
 
@@ -63,8 +60,6 @@ class RD_loss(Loss):
         output['scores']:2n
         output['Rdiffs']:n
         '''
-        feats0=output['feats0'] #b*f
-        feats1=output['feats1'] #b*f
         Rdiffs=output['Rdiffs'] #b
         scores=output['scores'] #b
 
@@ -83,7 +78,6 @@ class RM_loss(Loss):
     
     def ds(self,scores,pairs):
         ploss=0
-        uloss=0
         eps=1e-5
         for i in range(scores.shape[0]):
             logscore=-torch.log(scores[i,:,:]+eps)

@@ -3,13 +3,12 @@ import sys
 sys.path.append('..')
 import torch
 import numpy as np
-from torch.nn import DataParallel
 from torch.optim import Adam
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 import utils.utils as utils
-from dataops import dataset, name2dataset
+from dataops import name2dataset
 from network import name2network
 from train import name2loss, name2val
 

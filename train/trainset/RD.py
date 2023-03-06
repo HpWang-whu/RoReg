@@ -12,15 +12,13 @@ For RD:
     YOHO_Feature pairs+YOHO_PartII-->Ts(Save)
 """
 import os
-import torch
 import random
 import numpy as np
 from tqdm import tqdm
 from dataops.dataset import get_dataset_name
-from utils.r_eval import compute_R_diff
-from parses.parses_rd import get_config
+from parses.parses_train_rd import get_config
 from test import name2extractor, name2matcher, extractor_dr_index, extractor_localtrans
-from utils.utils import transform_points,read_pickle,save_pickle,make_non_exists_dir
+from utils.utils import save_pickle
 
 
 class RD_trainset():
