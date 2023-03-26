@@ -45,7 +45,10 @@ class trainset_GF(Dataset):
 class trainset_RD(Dataset):
     def __init__(self,cfg,is_training=True):
         self.cfg=cfg
-        self.batchsize=128
+        if is_training:
+            self.batchsize=self.cfg.batch_size
+        else:
+            self.batchsize=self.cfg.batch_size_val
         self.output_dir=self.cfg.output_cache_fn
         self.is_training=is_training
         self.datasets=get_dataset_name(self.cfg.trainset, self.cfg.origin_data_dir)

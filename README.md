@@ -99,7 +99,7 @@ python trainset.py --component RD
 python Train.py --component RD
 ```
 
-To train rotation coherence matcher yourself, you can following the commonds of 
+To train rotation coherence matcher yourself, you can follow the commonds of 
 ```
 python trainset.py --component RM # require ~300G storage space.
 python Train.py --component RM

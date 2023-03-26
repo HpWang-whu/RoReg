@@ -59,8 +59,8 @@ Train_Args.add_argument("--trainset_type",type=str,default="dataset_gf",
                         help="trainset_type")
 
 # hyperparameters
-Train_Args.add_argument("--batch_size",type=int,default=1,
-                        help="Training batch size")
+Train_Args.add_argument("--batch_size",type=int,default=32,
+                        help="Training batch size, used in ```python Trainset.py```")
 Train_Args.add_argument("--batch_size_val",type=int,default=32,
                         help="Training batch size")
 Train_Args.add_argument("--worker_num",type=int,default=16,

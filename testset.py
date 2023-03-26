@@ -195,7 +195,7 @@ class testset_create():
 
 
 if __name__=="__main__":
-    basedir = '../data'
+    basedir = './data'
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--model',

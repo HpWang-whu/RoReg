@@ -25,6 +25,10 @@ elif args.component == 'RD':
     
 elif args.component == 'RM':
     cfg,_ = parses_rm.get_config()
+    if (not cfg.batch_size == 1) or (not cfg.batch_size_val == 1):
+        print('The batch size for matcher training/validation should be 1. We will use batch_size = 1 and batch_size_val = 1 in the following.')
+        cfg.batch_size = 1
+        cfg.batch_size_val = 1
     generator = name2trainer['trainer_rm'](cfg)
     generator.run()
     

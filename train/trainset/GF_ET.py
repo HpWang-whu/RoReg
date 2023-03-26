@@ -203,24 +203,24 @@ class GF_ET_trainset():
                 pps_all=np.arange(Key_pps.shape[0]) #index
                 
                 if pps_all.shape[0]<10:continue
-                if pps_all.shape[0]<32:
-                    pps_all=np.repeat(pps_all,int(32/pps_all.shape[0])+1)
+                if pps_all.shape[0]<self.cfg.batch_size:
+                    pps_all=np.repeat(pps_all,int(self.cfg.batch_size/pps_all.shape[0])+1)
                     np.random.shuffle(pps_all)
                 
                 for i in range(10):
-                    #pair pps (choose 32):
+                    #pair pps (choose self.cfg.batch_size):
                     np.random.shuffle(pps_all)
-                    pps=Key_pps[pps_all[0:32]]# bn*2
+                    pps=Key_pps[pps_all[0:self.cfg.batch_size]]# bn*2
                     BaseIndex=np.arange(self.Rnum).astype(np.int)
-                    Index_i=np.random.choice(BaseIndex, size=32, replace=True)
-                    Index_j=np.random.choice(BaseIndex, size=32, replace=True)
+                    Index_i=np.random.choice(BaseIndex, size=self.cfg.batch_size, replace=True)
+                    Index_j=np.random.choice(BaseIndex, size=self.cfg.batch_size, replace=True)
                     
                     Rs=[]
                     R_indexs=[]
                     deltaR=[]
                     feats_one_batch_i=[]
                     feats_one_batch_j=[]
-                    for b in range(32):
+                    for b in range(self.cfg.batch_size):
                         Rs.append(AllRs[Index_i[b],Index_j[b]][None,:,:])
                         R_indexs.append(AllR_indexs[Index_i[b],Index_j[b]])
                         deltaR.append(AlldeltaRs[Index_i[b],Index_j[b]][None,:])

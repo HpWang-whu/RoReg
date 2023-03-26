@@ -59,9 +59,9 @@ Train_Args.add_argument("--trainset_type",type=str,default="dataset_rd",
                         help="trainset_type")
 
 # hyperparameters
-Train_Args.add_argument("--batch_size",type=int,default=1,
+Train_Args.add_argument("--batch_size",type=int,default=128,
                         help="Training batch size")
-Train_Args.add_argument("--batch_size_val",type=int,default=1,
+Train_Args.add_argument("--batch_size_val",type=int,default=128,
                         help="Training batch size")
 Train_Args.add_argument("--worker_num",type=int,default=16,
                         help="the threads used for dataloader")

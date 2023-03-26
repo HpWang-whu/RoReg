@@ -29,8 +29,8 @@ class Trainer:
         self.pth_fn=os.path.join(self.model_dir,'model.pth')
         self.best_pth_fn=os.path.join(self.model_dir,'model_best.pth')
         # hyperparameters
-        self.batch_size = self.cfg.batch_size
-        self.batch_size_val = self.cfg.batch_size_val
+        self.batch_size = 1 # use one generated batch file in one forward
+        self.batch_size_val = 1 # use one generated batch file in one forward
         self.worker_num = self.cfg.worker_num
         self.lr_init = self.cfg.lr_init
         self.lr_decay_rate = self.cfg.lr_decay_rate
