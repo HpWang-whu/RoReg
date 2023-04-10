@@ -1,10 +1,41 @@
-# RoReg: Pairwise Point Cloud Registration with Oriented Descriptors and Local Rotations
+<h1 align="center"> <p>🤗 RoReg</p></h1>
+<h3 align="center">
+<a href="https://doi.org/10.1109/TPAMI.2023.3244951" target="_blank">RoReg: Pairwise Point Cloud Registration with Oriented Descriptors and Local Rotations</a>
+</h3>
+
+<h3 align="center">
+IEEE TPAMI 2023
+</h3>
+
+<p align="center">
+<a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=YAdDCr0AAAAJ" target="_blank">Haiping Wang</a><sup>*,1</sup>, 
+<a href="https://liuyuan-pal.github.io/" target="_blank">Yuan Liu</a><sup>*,2</sup>,
+<a href="https://qingyonghu.github.io/" target="_blank">Qingyong Hu</a><sup>3</sup>,
+<a href="http://www.cs.ox.ac.uk/people/bing.wang/" target="_blank">Bing Wang</a><sup>4</sup>,
+<a href="" target="_blank">Jianguo Wang</a><sup>5</sup>,
+<a href="https://dongzhenwhu.github.io/" target="_blank">Zhen Dong</a><sup>&dagger;,1</sup>, 
+<a href="http://yulanguo.me/" target="_blank">Yulan Guo</a><sup>6</sup>,
+<a href="https://www.cs.hku.hk/people/academic-staff/wenping" target="_blank">Wenping Wang</a><sup>7</sup>
+<a href="https://scholar.google.com/citations?hl=zh-CN&user=DZsF2oIAAAAJ" target="_blank">Bisheng Yang</a><sup>&dagger;,1</sup> <br>
+</p>
+
+<p align="center">
+<sup>1</sup>Wuhan University &nbsp;&nbsp; 
+<sup>2</sup>The University of Hong Kong &nbsp;&nbsp; 
+<sup>3</sup>University of Oxford &nbsp;&nbsp; <br>
+<sup>4</sup>The Hong Kong Polytechnic University &nbsp;&nbsp; 
+<sup>5</sup>DiDi Chuxing &nbsp;&nbsp;  <br>
+<sup>6</sup>Sun Yat-sen University &nbsp;&nbsp; 
+<sup>7</sup>Texas A&M University &nbsp;&nbsp; <br>
+<sup>*</sup>The first two authors contribute equally. &nbsp;&nbsp; 
+<sup>&dagger;</sup>Corresponding authors. &nbsp;&nbsp; 
+</p>
 
 We present RoReg, a novel point cloud registration framework that fully exploits oriented descriptors and estimated local rotations in the whole registration pipeline. Previous methods mainly focus on extracting rotation-invariant descriptors for registration but unanimously neglect the orientations of descriptors. In this paper, we show that the oriented descriptors and the estimated local rotations are very useful in the whole registration pipeline, including feature description, feature detection, feature matching, and transformation estimation. Consequently, we design a novel oriented descriptor RoReg-Desc and apply RoReg-Desc to estimate the local rotations. Such estimated local rotations enable us to develop a rotation-guided detector, a rotation coherence matcher, and a one-shot-estimation RANSAC, all of which greatly improve the registration performance. Extensive experiments demonstrate that RoReg achieves state-of-the-art performance on the widely-used 3DMatch and 3DLoMatch datasets, and also generalizes well to the outdoor ETH dataset. In particular, we also provide in-depth analysis on each component of RoReg, validating the improvements brought by oriented descriptors and the estimated local rotations.
 
-## News
-
-- 2023-02-05 RoReg has been accepted by IEEE TPAMI! :tada: :tada:
+## 🆕 News
+- 2023-02-28: A multiview registration mehtod [SGHR](https://github.com/WHU-USI3DV/SGHR) is accepted by CVPR 2023! 🎉🎉
+- 2023-02-05 RoReg has been accepted by IEEE TPAMI! 🎉🎉
   
   [[TPAMI]](https://doi.org/10.1109/TPAMI.2023.3244951)  (*Early Access. We will fix some typographical errors like Fig.2 in the final publication.)
 
@@ -12,9 +43,10 @@ We present RoReg, a novel point cloud registration framework that fully exploits
 
   [[Supplementary_Material]](media/RoReg_Appendix.pdf)
 - 2022-09-16 The code of RoReg is released.
-- 2022-06-30 The early work of RoReg, a.k.a [YOHO](https://github.com/HpWang-whu/YOHO), is accepted by ACM MM 2022!
+- 2022-06-30 The early work of RoReg, a.k.a [YOHO](https://github.com/HpWang-whu/YOHO), is accepted by ACM MM 2022! 🎉🎉
 
-## Requirements
+
+## 💻 Requirements
 Here we offer the FCGF backbone RoReg. Thus FCGF requirements need to be met:
 - Ubuntu 14.04 or higher
 - CUDA 11.1 or higher
@@ -25,7 +57,7 @@ Specifically, The code has been tested with:
 - Ubuntu 16.04, CUDA 11.1, python 3.7.10, Pytorch 1.7.1, GeForce RTX 2080Ti.
 
 
-## Installation
+## 🔧 Installation
 - First, create the conda environment:
   ```
     conda create -n roreg python=3.7
@@ -56,7 +88,7 @@ Specifically, The code has been tested with:
   cd ../..
   ```
 
-## Dataset & Pretrained model
+## 💾 Dataset & Pretrained model
 The datasets and pretrained weights have been uploaded to Google Cloud:
 - [3dm_train_rot](https://drive.google.com/file/d/15wrOvrDST1gl7dTVwzE937TCQfse6Ihk/view?usp=sharing);
 - [3DMatch/3DLomatch](https://drive.google.com/file/d/1UzGBPce5VspD2YIj7zWrrJYjsImSEc-5/view?usp=sharing);
@@ -82,7 +114,7 @@ data/
     └── ETH/
 ```
 
-## Train
+## 🚅 Train
 To train RoReg-Desc and local rotation estimation (one-shot transformation estimation) with the FCGF backbone we offer, you can first prepare the trainset:
 ```
 python trainset.py --component GF
@@ -107,14 +139,14 @@ python Train.py --component RM
 
 All models will be saved in ```./checkpoints/FCGF```.
 
-## Demo
+## 🔦 Demo
 
 With the pretrained models, you can try RoReg with:
 ```
 python demo.py
 ```
 
-## Test on the 3DMatch and 3DLoMatch
+## ✏️ Test on the 3DMatch and 3DLoMatch
 With the TestData downloaded above, the test on 3DMatch and 3DLoMatch can be done by
 - Prepare the testset
 ```
@@ -140,7 +172,7 @@ More options as well as their descriptions can be found in ```Test.py```.
 All the results will be placed to ```./data/YOHO_FCGF```.
 
 
-## Generalize to the ETH dataset
+## ✒️ Generalize to the ETH dataset
 The generalization results on the outdoor ETH dataset can be got as follows:
 - Prepare the testset
 ```
@@ -153,7 +185,7 @@ python Test.py --RD --RM --ET yohoo --keynum 1000 --testset ETH --tau_2 0.2 --ta
 All the results will be placed to ```./data/YOHO_FCGF```.
 
 
-## Citation
+## 💡 Citation
 
 If you find RoReg/YOHO useful in your research, please consider citing:
 
@@ -177,7 +209,7 @@ If you find RoReg/YOHO useful in your research, please consider citing:
 }
 ```
 
-## Related Projects
+## 🔗 Related Projects
 Welcome to take a look at the homepage of our research group [WHU-USI3DV](https://github.com/WHU-USI3DV) ! We focus on 3D Computer Vision, particularly including 3D reconstruction, scene understanding, point cloud processing as well as their applications in intelligent transportation system, digital twin cities, urban sustainable development, and robotics.
 
 [YOHO](https://github.com/HpWang-whu/YOHO) is the early work of RoReg and we sincerely thank the contributing projects:
@@ -187,7 +219,3 @@ Welcome to take a look at the homepage of our research group [WHU-USI3DV](https:
 - [Predator](https://github.com/overlappredator/OverlapPredator) for the 3DLoMatch dataset;
 - [ETH](https://projects.asl.ethz.ch/datasets/doku.php?id=laserregistration:laserregistration) for the ETH dataset;
 - [PerfectMatch](https://github.com/zgojcic/3DSmoothNet) for organizing the 3DMatch and ETH dataset.
-
-
-
-
