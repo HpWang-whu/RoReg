@@ -8,7 +8,7 @@ IEEE TPAMI 2023
 </h3>
 
 <p align="center">
-<a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=YAdDCr0AAAAJ" target="_blank">Haiping Wang</a><sup>*,1</sup>, 
+<a href="https://hpwang-whu.github.io/" target="_blank">Haiping Wang</a><sup>*,1</sup>, 
 <a href="https://liuyuan-pal.github.io/" target="_blank">Yuan Liu</a><sup>*,2</sup>,
 <a href="https://qingyonghu.github.io/" target="_blank">Qingyong Hu</a><sup>3</sup>,
 <a href="http://www.cs.ox.ac.uk/people/bing.wang/" target="_blank">Bing Wang</a><sup>4</sup>,
