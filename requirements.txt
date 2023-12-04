@@ -1,4 +1,3 @@
-pytorch==1.7.1
 numpy
 scipy
 matplotlib
@@ -9,5 +8,5 @@ joblib
 scikit-learn
 nibabel
 tqdm
-open3d==0.8.0.0
+open3d # use open3d==0.8.0.0 for Ubuntu 16.04
 MinkowskiEngine
