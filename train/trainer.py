@@ -30,7 +30,7 @@ class Trainer:
         self.best_pth_fn=os.path.join(self.model_dir,'model_best.pth')
         # hyperparameters
         self.batch_size = 1 # use one generated batch file in one forward
-        self.batch_size_val = 1 # use one generated batch file in one forward
+        self.batch_size_val = self.cfg.batch_size_val # use one generated batch file in one forward
         self.worker_num = self.cfg.worker_num
         self.lr_init = self.cfg.lr_init
         self.lr_decay_rate = self.cfg.lr_decay_rate
@@ -164,6 +164,7 @@ class Trainer_RD(Trainer):
         self.val_index = 'val_recall'
         self.greater_sign = 1
         self.best_para = 0
+        self.batch_size_val = 1 # the batch size is used in dataloader
         
 class Trainer_RM(Trainer):
     def __init__(self, cfg):
