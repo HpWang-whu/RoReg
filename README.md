@@ -16,7 +16,7 @@ IEEE TPAMI 2023
 <a href="https://dongzhenwhu.github.io/" target="_blank">Zhen Dong</a><sup>&dagger;,1</sup>, 
 <a href="http://yulanguo.me/" target="_blank">Yulan Guo</a><sup>6</sup>,
 <a href="https://www.cs.hku.hk/people/academic-staff/wenping" target="_blank">Wenping Wang</a><sup>7</sup>
-<a href="https://scholar.google.com/citations?hl=zh-CN&user=DZsF2oIAAAAJ" target="_blank">Bisheng Yang</a><sup>&dagger;,1</sup> <br>
+<a href="https://scholar.google.com/citations?user=TJkm8igAAAAJ&hl=zh-CN" target="_blank">Bisheng Yang</a><sup>&dagger;,1</sup> <br>
 </p>
 
 <p align="center">
@@ -37,8 +37,8 @@ We present RoReg, a novel point cloud registration framework that fully exploits
 - 2023-02-28: A multiview registration mehtod [SGHR](https://github.com/WHU-USI3DV/SGHR) is accepted by CVPR 2023! 🎉🎉
 - 2023-02-05 RoReg has been accepted by IEEE TPAMI! 🎉🎉
   
-  [[TPAMI]](https://doi.org/10.1109/TPAMI.2023.3244951)  (*Early Access. We will fix some typographical errors like Fig.2 in the final publication.)
-
+  [[TPAMI]](https://doi.org/10.1109/TPAMI.2023.3244951) 
+  
   [[Project_Page]](https://hpwang-whu.github.io/RoReg/) 
 
   [[Supplementary_Material]](media/RoReg_Appendix.pdf)
