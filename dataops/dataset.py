@@ -107,14 +107,26 @@ class ThrDMatchPartDataset(EvalDataset):
         return self.name
 
     def get_kps(self, cloud_id):
-        if not os.path.exists(self.kps_pc_fn[int(cloud_id)]):
+        if os.path.exists(self.kps_fn[int(cloud_id)]):
             pc=self.get_pc(cloud_id)
             key_idxs=np.loadtxt(self.kps_fn[int(cloud_id)]).astype(np.int)
             keys=pc[key_idxs]
             make_non_exists_dir(f'{self.root}/Keypoints_PC')
             np.save(self.kps_pc_fn[int(cloud_id)],keys)
             return keys
-        return np.load(self.kps_pc_fn[int(cloud_id)])
+        else:
+            # random sample 5000
+            pc = self.get_pc(cloud_id)
+            key_idxs = np.arange(pc.shape[0])
+            np.random.shuffle(key_idxs)
+            key_idxs = key_idxs[0:5000]
+            keys=pc[key_idxs]
+            print(keys.shape)
+            make_non_exists_dir(f'{self.root}/Keypoints')
+            np.savetxt(self.kps_fn[int(cloud_id)],key_idxs)
+            make_non_exists_dir(f'{self.root}/Keypoints_PC')
+            np.save(self.kps_pc_fn[int(cloud_id)],keys)
+            return keys
 
 #Get dataset items with the dataset name(output: dict)
 def get_dataset_name(dataset_name,origin_data_dir):
@@ -144,18 +156,6 @@ def get_dataset_name(dataset_name,origin_data_dir):
             datasets[scenes[i]]=ThrDMatchPartDataset(root_dir,stationnums[i])
             datasets[scenes[i]].name=f'{dataset_name}/{scenes[i]}'
         return datasets
-
-    # if dataset_name=='3dmatch':
-    #     datasets={}
-    #     datasets['wholesetname']=f'{dataset_name}'
-    #     scenes=["kitchen"]
-    #     stationnums=[60]
-
-    #     for i in range(len(scenes)):
-    #         root_dir=f'{origin_data_dir}/{dataset_name}/'+scenes[i]
-    #         datasets[scenes[i]]=ThrDMatchPartDataset(root_dir,stationnums[i])
-    #         datasets[scenes[i]].name=f'{dataset_name}/{scenes[i]}'
-    #     return datasets
 
 
     if dataset_name=='3dLomatch':
