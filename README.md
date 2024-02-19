@@ -80,14 +80,6 @@ Specifically, The code has been tested with:
   pip install -r requirements.txt
   ```
 
-- Finally, compile the [CUDA based KNN searcher](https://github.com/vincentfpgarcia/kNN-CUDA):
-  ```
-  cd utils/knn_search
-  export CUDA_HOME=/usr/local/cuda-11.1 #We have checked cuda-11.1.
-  python setup.py build_ext --inplace
-  cd ../..
-  ```
-
 ## 💾 Dataset & Pretrained model
 The datasets and pretrained weights have been uploaded to Google Cloud:
 - [3dm_train_rot](https://drive.google.com/file/d/15wrOvrDST1gl7dTVwzE937TCQfse6Ihk/view?usp=sharing);
